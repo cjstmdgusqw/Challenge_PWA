@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.challenge.workout.Mapper.RoomMapper">
+    <insert id="createRoom" parameterType="com.challenge.workout.DTO.RoomDTO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO room (title, content, image_path, start_date, end_date, created_by)
+        VALUES (#{title}, #{content}, #{imagePath}, #{startDate}, #{endDate}, #{createdBy})
+    </insert>
+
+    <insert id="owerMember" parameterType="com.challenge.workout.DTO.RoomMemberDTO">
+        INSERT INTO room_member (room_id, member_id, role, joined_at)
+        VALUES (#{roomId}, #{memberId}, #{role}, GETDATE())
+    </insert>
+</mapper>

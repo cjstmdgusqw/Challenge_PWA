@@ -37,7 +37,7 @@ public class MemberService {
     }
 
     public MemberDTO getInfo(String id){
-        MemberDTO member =  memberMapper.findById(id);
+        MemberDTO member = memberMapper.findById(id);
         return member;
     }
 

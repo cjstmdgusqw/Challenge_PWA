@@ -10,7 +10,7 @@
     </insert>
 
     <select id="findById" parameterType = "String" resultType="com.challenge.workout.DTO.MemberDTO">
-        select id, password, name, gender, phone, profileImagePath from members where id = #{Id}
+        select id, password, name, gender, phone, profileImagePath, member_no as memberNo from members where id = #{Id}
     </select>
 
     <update id="updateMember" parameterType="com.challenge.workout.DTO.MemberDTO">
