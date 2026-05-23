@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.challenge.workout.Mapper.MemberMapper">
+
+    <insert id="insertMember" parameterType="com.challenge.workout.DTO.MemberDTO">
+        INSERT INTO members (id, password, name, gender, phone, created_at)
+        VALUES (#{Id}, #{password}, #{name}, #{gender}, #{phone}, GETDATE())
+    </insert>
+
+    <select id="findById" parameterType = "String" resultType="com.challenge.workout.DTO.MemberDTO">
+        select id, password, name, gender, phone, profileImagePath from members where id = #{Id}
+    </select>
+
+    <update id="updateMember" parameterType="com.challenge.workout.DTO.MemberDTO">
+        UPDATE members
+        <set>
+            name = #{name},
+            phone = #{phone},
+            <if test="profileImagePath != null">
+                profileImagePath = #{profileImagePath},
+            </if>
+        </set>
+        WHERE id = #{Id}
+    </update>
+
+</mapper>
